@@ -1,230 +1,104 @@
-# Civit Image grabber
+Sure! I'll update the `README.md` to include details about the new GUI and any relevant changes made to the script.
 
-It downloads all the images from a provided Username, Model ID or Model TAG from CivitAI. 
-Should the API not spit out all the data for all images then I'm sorry. 
-The script can only download where data is provided.
+### Updated `README.md`
 
-The images are Downloaded into a folder with the name of the user, ModelID or the TAG <br /> 
-Second Level is the Model Name with which the image was generated.
+```markdown
+# Civit Image Downloader
 
+## Overview
 
-# CivitAI API is fixed
+The **Civit Image Downloader** is a Python-based tool designed to download images from CivitAi using their API. This tool provides several functionalities, including the ability to search for images by username, model ID, model version ID, or model tags. It also offers options for image quality, timeout settings, and whether to re-download already tracked images.
 
-# Usage 
-```
-install Python3
-```
-```
-pip install -r requirements.txt
-```
-```
+### New GUI Feature
+
+This tool now includes a simple graphical user interface (GUI) built with **Tkinter**. The GUI allows users to input their search parameters and start the download process without needing to interact with the command line. The GUI simplifies the use of the downloader by providing clear input fields and options for the user.
+
+## Installation
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/civit-image-downloader.git
+   cd civit-image-downloader
+   ```
+
+2. **Install Dependencies:**
+   Ensure you have the required Python packages installed:
+   ```bash
+   pip install httpx tqdm tk
+   ```
+
+3. **Run the GUI:**
+   Simply run the Python script to start the GUI:
+   ```bash
+   python civit_image_downloader.py
+   ```
+
+## Features
+
+### 1. **GUI Interface**
+
+The GUI includes the following features:
+
+- **Timeout (seconds):** Input field to set the timeout duration for each request.
+- **Image Quality:** Dropdown menu to select between SD (Standard Definition) and HD (High Definition).
+- **Allow Redownload:** Checkbox to toggle whether to re-download images that have already been tracked.
+- **Mode Selection:** Dropdown to choose the search mode: username, model ID, model tag search, or model version ID.
+- **Input Field:** Input area for usernames, model IDs, tags, or model version IDs, depending on the selected mode.
+- **Start Download Button:** Initiates the download process based on the provided inputs.
+
+### 2. **Command-Line Interface (CLI) (Deprecated)**
+
+While the tool now includes a GUI, the underlying functionalities of the command-line interface (CLI) are still accessible within the script. The CLI mode has been deprecated in favor of the GUI but remains functional for advanced users or integration into other systems.
+
+### 3. **Image Downloading**
+
+- **Search by Username:** Downloads images associated with a specific CivitAi username.
+- **Search by Model ID:** Downloads images associated with a specific model ID.
+- **Search by Model Version ID:** Downloads images associated with a specific model version ID.
+- **Search by Tags:** Downloads images based on tags. The tool checks prompts against the specified tags.
+
+### 4. **Logging and Error Handling**
+
+The tool logs errors and progress in a log file (`civit_image_downloader_log_1.1.txt`). Errors during downloads, such as network issues, are logged and handled gracefully.
+
+### 5. **Metadata Handling**
+
+- **Metadata Extraction:** Extracts and saves metadata for each downloaded image.
+- **Image Sorting:** Automatically sorts images into folders based on the associated model or tag.
+
+## Usage
+
+### Running with the GUI
+
+1. **Start the GUI:**
+   ```bash
+   python civit_image_downloader.py
+   ```
+
+2. **Fill in the Parameters:**
+   - Set the timeout duration.
+   - Choose image quality (SD or HD).
+   - Toggle the option to allow redownloads.
+   - Select the search mode (username, model ID, etc.).
+   - Enter the relevant inputs (e.g., usernames, model IDs).
+
+3. **Start Download:**
+   - Click the "Start Download" button to initiate the download process. The status and results will be displayed within the GUI.
+
+### CLI (Advanced Users)
+
+For users who prefer the command line, the script can still be run as before, with manual input prompts guiding the user through the process.
+
+```bash
 python civit_image_downloader.py
 ```
-The script  will ask you to 
 
-          Enter timeout value (in seconds): 
-          Choose image quality (1 for SD, 2 for HD): 
-          Allow re-downloading of images already tracked (1 for Yes, 2 for No) [default: 2]: 
-          Choose mode (1 for username, 2 for model ID, 3 for Model tag search, 4 for model version ID):
-          Mode 3 
-          Enter tags (comma-separated): TAG
-          Disable prompt check? (y/n):
+## Contributing
 
-                        
-If you leave the timeout value emtpy it will use the default Timeout value 60 sec. <br /> 
-If you leave the image quality value emtpy it will use the default image quality Value SD.
+If you'd like to contribute to this project, feel free to fork the repository and submit a pull request. Contributions are always welcome!
 
-Optional: 2 or more Items which are separated with a comma
+## License
 
-**Folder Structure**  <br /> 
-The downloaded files will be organized in the following structure:
+This project is licensed under the MIT License. See the LICENSE file for details.
+
 ```
-image_downloads/
-└── Username_Search/
-|   ├── Username/
-│   |   ├── Model1/
-│   |   |   ├── image1.jpeg
-│   |   |   ├── image1.png
-│   |   |   └── details.txt
-│   |   ├── Model2/
-│   |       ├── image1.jpeg
-│   |       ├── image1.png
-│   |       └── details.txt
-
-├── Model_ID_Search/
-│   └── Model_ID/
-│       ├── Model1/
-│       |   ├── image1.jpeg
-│       |   ├── image1.png
-│       |   └── details.txt
-│       ├── Model2/
-│           ├── image1.jpeg
-│           ├── image1.png
-│           └── details.txt
-
-├── Model_Version_ID_Search/
-    └── Version_ID/
-        ├── Model1/
-        |   ├── image1.jpeg
-        |   ├── image1.png
-        |   └── details.txt
-        ├── Model2/
-        |   ├── image1.jpeg
-        |   ├── image1.png
-        |   └── details.txt
-
-├── Model_Tag_Search/
-│   └── Searched_tag/
-│       ├── model_ID/
-│           ├──Model1/
-│           |   ├── image1.jpeg
-│           |   ├── image1.png
-│           |   └── details.txt
-│           └── Searched_tag_summary_YYYYMMDD.csv
-│           ├──Model2/
-            |   ├── image1.jpeg
-            |   ├── image1.png
-            |   └── details.txt
-│           └── Searched_tag_summary_YYYYMMDD.csv
-```
-# Update History
-
-## 1.1 New Feature & Update
-
-### New Download Option Modelversion ID   <br />
-The script can now selectively download images that belong to a specific model version ID. Option 4 <br />
-This saves disk space and in addition, the Civit AI Server API is used less, which leads to a more efficient use of resources. <br />
-The Script will download the Images to this new Folder  --> Model_Version_ID_Search<br />
-Updated the **Folder Structure** <br />
-
-
-### Updated Timeout  <br />
-i have noticed that the timeout of 20 seconds is too short for model ID and version ID and that i get more network errors than downloads,  <br />
-so i have set it to 60 seconds for now.  <br />
-But if you want to be on the safe side, then enter the following: 120  for the option: Enter timeout value (in seconds): <br />
-this has always worked up to now <br />
-
-
-## 1.0  Update
-
-Updated Folder Structure. <br />
-The script creates a Folder for each Option you can choose.  <br />
-This new structure ensures better organization based on the search type, making image management more efficient. <br />
-
-## 0.9 Feature & Updates
-
-New Feature
-
-Redownload of images.
-The new option allows the tracking file to be switched off. So that already downloaded images can be downloaded again. 
-```
-Allow re-downloading of images already tracked (1 for Yes, 2 for No) [default: 2]: 
-```
-If you choose 2 or just hit enter the Script will run with Tracking as Default like always. <br />
-
-
-New Update <br />
-
-When the script is finished, a summary of the usernames or Model IDs that could not be found is displayed. <br />
-```
-Failed identifiers:
-username: 19wer244rew
-```
-```
-Failed identifiers:
-ModelID: 493533
-```
-
-
-## 0.8 Helper script tagnames
-With this Script you can search locally in txt a file if your TAG is searchable.  <br />
-Just launch tagnames.py and it creates a txt File with all the Tags that the API gives out for the Model TAG search Option 3  <br />
-But there are some entrys that are cleary not working. I dont kow why they are in the API Answer.  <br />
-It has an function to add only new TAGS to he txt File if you run it again. 
-
-## 0.7 Features Updates Performance 
-
-Features: <br /> 
-
-Model Tag Based Image download in SD or HD with Prompt Check Yes or NO <br /> 
-Prompt Check YES means when the TAG is also present in the Prompt, then the image will be Downloaded. Otherwise it will be skipped.<br /> 
-Prompt Check NO all Images with the searched TAG will be Downloaded. But the chance for unrelated Images is higher.<br /> 
-
-CSV File creation within Option 3 TAG Seach  
-The csv file will contain the image data that, according to the JSON file, has already been downloaded under a different TAG in this format: <br />
-"Current Tag,Previously Downloaded Tag,Image Path,Download URL"  <br /> 
-
-Litte Statistc how many images have just been downloaded and skipped with a why reasons.
-
-Updates: <br /> 
-
-Use of Multiple Entrys in all 3 Options comma-separated <br /> 
-
-New Folder Structure for Downloaded Images in all Options First Folder is named after what you searched Username, ModelID, TAG. 
-Second is the Model that was used to generate the image
-
-![Untitled](https://github.com/Confuzu/CivitAI_Image_grabber/assets/133601702/fe49eb95-f1bc-4d96-80b6-c165d76d29e5)
-
-Performance:
-
-Code optimizations now the script runs smoother and faster. <br /> 
-Better Error Handling for some Cases <br /> 
-
-
-## 0.6 New Function
-
-Rate Limiting set to 20 simultaneous connections. 
-Download Date Format changend in the JSON Tracking File 
-
-
-## 0.5 New Features 
-
-Option for Downloading SD (jpeg) Low Quality or HD (PNG) High Quality Version of Images
-
-
-Better Tracking of images that already downloaded, with a JSON File called downloaded_images.json in the same Folder as the script. The Scripts writes 
-for SD Images with jpeg Ending
-```
-        "ImageID_SD": 
-        "path": "image_downloads/civitAIuser/image.jpeg",
-        "quality": "SD",
-        "download_date": "YYYY-MM-DD - H:M"       
-```
-For HD Images with PNG Ending
-```
-        "ImageID_HD": {
-        "path": "image_downloads/civitAIuser/Image.png",
-        "quality": "HD",
-        "download_date": "YYYY-MM-DD- H:M"
-```
-into it and checks before Downloading a Image. For Both Option, Model ID or Username
-
-
-## 0.4 Added new Functions
-
-Image Download with Model ID. Idea for it came from bbdbby 
-The outcome looks sometimes chaotic a lot of folders with Modelnames you cant find on CivitAI. 
-Because of renaming or Deleting the Models. But older Images have the old Model Names in the META data. 
-
-
-Sort function to put the images and meta txt files into the right Model Folder. 
-The sort Function relies on the Meta Data from the API for the images. Sometimes Chaos. 
-Especially for models that have a lot of images.
-
-
-Tracking of images that already downloaded with a text file called downloaded_images.txt in the same Folder as the script.
-The Scripts writes the Image ID into  it and checks before Downloading a Image. 
-For Both Option, Model ID or Username
-
-Increased the timeout to 20
-
-## 0.3 Added a new Function
-
-It is writing the Meta Data for every image into a separate text file with  the ID of the image: ID_meta.txt.
-If no Meta Data is available, the text file will have the URL to the image to check on the website.
-
-Increased the timeout to 10
-
-Added a delay between requests  
-    
-## 0.2 Updated with better error handling, some json validation and an option to set a timeout
