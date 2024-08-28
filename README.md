@@ -1,7 +1,3 @@
-Sure! I'll update the `README.md` to include details about the new GUI and any relevant changes made to the script.
-
-### Updated `README.md`
-
 ```markdown
 # Civit Image Downloader
 
