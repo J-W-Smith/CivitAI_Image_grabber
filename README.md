@@ -1,4 +1,4 @@
-```markdown
+
 # Civit Image Downloader
 
 ## Overview
@@ -13,8 +13,8 @@ This tool now includes a simple graphical user interface (GUI) built with **Tkin
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/civit-image-downloader.git
-   cd civit-image-downloader
+   git clone https://github.com/J-W-Smith/CivitAI_Image_grabber.git
+   cd CivitAI_Image_grabber
    ```
 
 2. **Install Dependencies:**
@@ -26,7 +26,7 @@ This tool now includes a simple graphical user interface (GUI) built with **Tkin
 3. **Run the GUI:**
    Simply run the Python script to start the GUI:
    ```bash
-   python civit_image_downloader.py
+   python gui_civit_image_downloader.py
    ```
 
 ## Features
@@ -68,7 +68,7 @@ The tool logs errors and progress in a log file (`civit_image_downloader_log_1.1
 
 1. **Start the GUI:**
    ```bash
-   python civit_image_downloader.py
+   python gui_civit_image_downloader.py
    ```
 
 2. **Fill in the Parameters:**
@@ -86,7 +86,7 @@ The tool logs errors and progress in a log file (`civit_image_downloader_log_1.1
 For users who prefer the command line, the script can still be run as before, with manual input prompts guiding the user through the process.
 
 ```bash
-python civit_image_downloader.py
+python gui_civit_image_downloader.py
 ```
 
 ## Contributing
@@ -96,5 +96,3 @@ If you'd like to contribute to this project, feel free to fork the repository an
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-```
